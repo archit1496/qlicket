@@ -9,6 +9,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 login user id=12345;
 login password=qlicket;
 
+After login user will be routed to the flight-ticket page, where the user can filter it by duration, arrival time and price.
+The user can clear filters at any time and start filtering again.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
