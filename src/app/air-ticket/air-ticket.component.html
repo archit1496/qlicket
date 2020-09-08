@@ -1,1 +1,118 @@
-<p>air-ticket works!</p>
+<section>
+    <div class="card p-2 mb-2">
+        <div class="row">
+            <div class="col-sm">
+                Departure
+            </div>
+            <div class="col-sm">
+                <div>
+                    <span (click)="onDurationFilterClick()" class="cursor-pointer"
+                        [ngClass]="{'priceFilter':filter.durationFilter==='ascending' || filter.durationFilter==='descending' }">Duration</span>&nbsp;
+                    <span *ngIf="filter.durationFilter==='ascending'"
+                        [ngClass]="{'priceFilter':filter.durationFilter==='ascending' || filter.durationFilter==='descending' }"><i
+                            class="fa fa-arrow-up"></i></span>
+                    <span *ngIf="filter.durationFilter==='descending'"
+                        [ngClass]="{'priceFilter':filter.durationFilter==='ascending' || filter.durationFilter==='descending' }"><i
+                            class="fa fa-arrow-down"></i></span>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div>
+                    <span (click)="onArrivalFilterClick()" class="cursor-pointer"
+                        [ngClass]="{'priceFilter':filter.arrivalFilter==='ascending' || filter.arrivalFilter==='descending' }">Arrival</span>&nbsp;
+                    <span *ngIf="filter.arrivalFilter==='ascending'"
+                        [ngClass]="{'priceFilter':filter.arrivalFilter==='ascending' || filter.arrivalFilter==='descending' }"><i
+                            class="fa fa-arrow-up"></i></span>
+                    <span *ngIf="filter.arrivalFilter==='descending'"
+                        [ngClass]="{'priceFilter':filter.arrivalFilter==='ascending' || filter.arrivalFilter==='descending' }"><i
+                            class="fa fa-arrow-down"></i></span>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div>
+                    <span (click)="onPriceFilterClick()" class="cursor-pointer"
+                        [ngClass]="{'priceFilter':filter.priceFilter==='ascending' || filter.priceFilter==='descending' }">Price</span>&nbsp;
+                    <span *ngIf="filter.priceFilter==='ascending'"
+                        [ngClass]="{'priceFilter':filter.priceFilter==='ascending' || filter.priceFilter==='descending' }"><i
+                            class="fa fa-arrow-up"></i></span>
+                    <span *ngIf="filter.priceFilter==='descending'"
+                        [ngClass]="{'priceFilter':filter.priceFilter==='ascending' || filter.priceFilter==='descending' }"><i
+                            class="fa fa-arrow-down"></i></span>
+                </div>
+            </div>
+            <div class="col-sm">
+                <button (click)="onClearFilter()" *ngIf="filter?.priceFilter!='' || filter?.arrivalFilter!='' || filter?.durationFilter!=''"
+                    type="button" class="btn btn-danger col-6 btn-sm" type="submit">
+                    Clear Filter
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class=" card p-2 mb-2" *ngFor="let ticket of ticketJson">
+        <div class="row">
+            <div class="col-sm">
+                <div>
+                    <img [src]="ticket?.flightImage" style="max-width: 50px;height: 50px;">
+                    <span class="flightName">
+                        {{ticket?.flightName}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div class="boardingLocation">
+                    {{ticket?.boardingLocation}}
+                </div>
+                <div>
+                    <b>
+                        {{ticket?.boardingTime}}
+                    </b>
+                </div>
+                <div class="refundStatus">
+                    {{ticket?.refundStatus}}
+                </div>
+            </div>
+            <div class="col-sm">
+                <b>
+                    <span>{{ticket?.durationHour}}hr&nbsp;{{ticket?.durationMinute}}m</span>
+
+                </b>
+            </div>
+            <div class="col-sm">
+                <div class="boardingLocation">
+                    {{ticket?.arrivalLocation}}
+                </div>
+                <div>
+                    <b>
+                        {{ticket?.arrivalTime}}
+                    </b>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div>
+                    <b>
+                        ₹ {{ticket?.price}}
+                    </b>
+                </div>
+                <div>
+                    <span class="noCostEmi">No Cost EMI from</span>
+                    <span class="noCostEmiAmount">
+                        ₹ {{ticket?.emiAmount}}
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm">
+                <button type="button" class="btn btn-warning col-6" type="submit">
+                    Book
+                </button>
+                <div class="flightDetail mt-2">
+                    <span class="ml-4">Fight Details</span>&nbsp;
+                    <span><i class="fa fa-angle-down"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
